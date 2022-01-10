@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1>Welcome {{ name }}</h1>
+
+<a href={{ path('about-me') }}>About Me</a>
+
+<form method="post" action="/change" accept-charset="UTF-8">
+    {# <input type="hidden" name="action" value="users/login"> #}
+
+    <h3><label for="user_name">Introduce your name</label></h3>
+    <input id="user_name" type="text" name="user_name">
+
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
