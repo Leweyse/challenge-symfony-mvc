@@ -36,4 +36,35 @@ class LearningController extends AbstractController
             'name' => $name
         ]);
     }
+
+    #[Route('/change', name: 'change')]
+    public function changeMyName(Request $request): Response
+    {
+        if ($request->isMethod('POST')) {
+            $session = $request->getSession();
+
+            $session->set('user_name', $request->get('user_name'));
+        }
+
+        return $this->redirect('home');
+    }
+
+    #[Route('/about-becode', name: 'about-me')]
+    public function aboutMe(Request $request): Response
+    {
+        $session = $request->getSession();
+        $session_name = $session->get('user_name');
+
+        if ($session_name) {
+            $name = $session_name;
+
+            return $this->render('learning/about-me.html.twig', [
+                'controller_name' => 'LearningController',
+                'name' => $name
+            ]);
+
+        } else {
+            return $this->forward('App\Controller\LearningController::showMyName', []);
+        }
+    }
 }
