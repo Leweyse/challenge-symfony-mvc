@@ -9,8 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Service\Master;
+
 class LearningController extends AbstractController
 {
+    public function __construct(Master $service) {
+        $this->service = $service;
+    }
+
     #[Route('/learning', name: 'learning')]
     public function index(): Response
     {
@@ -42,8 +48,14 @@ class LearningController extends AbstractController
     {
         if ($request->isMethod('POST')) {
             $session = $request->getSession();
+            $name = $request->get('user_name');
+            
+            // $name = $this->service->capitalize($name);
 
-            $session->set('user_name', $request->get('user_name'));
+            // $name = $this->service->dashes($name);
+
+            $this->service->logger($name);
+            $session->set('user_name', $name);
         }
 
         return $this->redirect('home');
