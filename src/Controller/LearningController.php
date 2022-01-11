@@ -10,11 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Service\Master;
+use App\Service\MyLogger;
 
 class LearningController extends AbstractController
 {
-    public function __construct(Master $service) {
+    public function __construct(Master $service, MyLogger $logger) {
         $this->service = $service;
+        $this->logger = $logger;
     }
 
     #[Route('/learning', name: 'learning')]
@@ -48,12 +50,13 @@ class LearningController extends AbstractController
     {
         if ($request->isMethod('POST')) {
             $session = $request->getSession();
+
             $name = $request->get('user_name');
+            $transformClass = $request->get('transform');
             
-            // $name = $this->service->capitalize($name);
+            $name = $this->service->transformer($name, $transformClass);
 
-            // $name = $this->service->dashes($name);
-
+            $this->logger->handleMSG($transformClass);
             $session->set('user_name', $name);
         }
 
