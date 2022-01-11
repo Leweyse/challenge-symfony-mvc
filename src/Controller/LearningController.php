@@ -54,7 +54,6 @@ class LearningController extends AbstractController
 
             // $name = $this->service->dashes($name);
 
-            $this->service->logger($name);
             $session->set('user_name', $name);
         }
 
