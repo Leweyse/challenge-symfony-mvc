@@ -21,5 +21,12 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    App\Service\Capitalize: ~
+    App\Service\Dashes: ~
+
+    App\Service\TransformInterface $dashes: '@App\Service\Dashes'
+
+    App\Service\TransformInterface $capitalize: '@App\Service\Capitalize'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
