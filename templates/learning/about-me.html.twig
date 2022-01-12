@@ -2,6 +2,12 @@
 
 {% block title %}About Me{% endblock %}
 
-{% block body %}
+{% block aside %}
+<p>DMY: {{ date|date("d-M-Y") }}</p>
+<p>MDY: {{ date|date("M-d-Y") }}</p>
+<p>YMD: {{ date|date("Y-M-d") }}</p>
+{% endblock %}
+
+{% block main %}
 <h1>Welcome {{ name }}</h1>
 {% endblock %}
