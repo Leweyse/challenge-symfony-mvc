@@ -57,10 +57,12 @@ class LearningController extends AbstractController
 
         if ($session_name) {
             $name = $session_name;
+            $date = new \DateTime();
 
             return $this->render('learning/about-me.html.twig', [
                 'controller_name' => 'LearningController',
-                'name' => $name
+                'name' => $name,
+                'date' => $date
             ]);
 
         } else {
