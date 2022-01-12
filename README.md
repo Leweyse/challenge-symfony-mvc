@@ -33,6 +33,6 @@ New framework! This repository contains a serie of 3 exercises to get a basic un
 - Run `symfony server:start`
 
 <!-- Extra Links -->
-[mvc]: https://github.com/Leweyse/challenge-symfony-mvc
-[di]: https://github.com/Leweyse/challenge-symfony-mvc/tree/dependency-injection
-[twig]: https://github.com/Leweyse/challenge-symfony-mvc/tree/challenge-twig
+[mvc]: Leweyse/challenge-symfony-mvc/tree/main
+[di]: Leweyse/challenge-symfony-mvc/tree/dependency-injection
+[twig]: Leweyse/challenge-symfony-mvc/tree/challenge-twig
