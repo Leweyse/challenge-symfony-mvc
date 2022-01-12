@@ -2,17 +2,50 @@
 
 {% block title %}Home{% endblock %}
 
-{% block body %}
-<h1>Welcome {{ name }}</h1>
+{% block stylesheets %}
+    <style>
+        form > * {
+            padding: 1rem 0;
+        }
 
-<a href={{ path('about-me') }}>About Me</a>
+        input {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid #FFFBFC;
+            border-radius: 5px;
+            outline: none;
+        }
 
-<form method="post" action="/change" accept-charset="UTF-8">
-    {# <input type="hidden" name="action" value="users/login"> #}
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus-visible {
+            border: 1px solid #FFFBFC;
+            -webkit-text-fill-color: #FFFBFC;
+            -webkit-box-shadow: 0 0 0px 1000px #010400 inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
 
-    <h3><label for="user_name">Introduce your name</label></h3>
-    <input id="user_name" type="text" name="user_name">
+        input[type="submit"] {
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
 
-    <input type="submit" value="Submit">
-</form>
+{% block aside %}
+<p>{{ name|title }}</p>
+{% endblock %}
+
+{% block main %}
+<section>
+    <h1>Welcome {{ name }}</h1>
+
+    <form method="post" action="/change" accept-charset="UTF-8">
+        {# <input type="hidden" name="action" value="users/login"> #}
+
+        <h3><label for="user_name">Introduce your name</label></h3>
+        <input id="user_name" type="text" name="user_name">
+
+        <input type="submit" value="Submit">
+    </form>
+</section>
 {% endblock %}
